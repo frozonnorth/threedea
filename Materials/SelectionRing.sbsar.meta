@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4390727a31f7e4340acf6b58c8429b67
-timeCreated: 1492744599
+timeCreated: 1492798771
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -58,7 +58,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Selected
       value:
-        scalar[0]: 0.3
+        scalar[0]: 0
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -72,7 +72,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Count
       value:
-        scalar[0]: 3.2
+        scalar[0]: 2.9
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -205,6 +205,16 @@ SubstanceImporter:
       wrapMode: 0
     - name: selectionring_output_1
       alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: selectionring_output_1 (Clone)
+      alphaSource: 6
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: selectionring_output (Clone)
+      alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
