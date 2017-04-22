@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4390727a31f7e4340acf6b58c8429b67
-timeCreated: 1492798771
+timeCreated: 1492876674
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -37,7 +37,7 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Pattern_Type
       value:
-        scalar[0]: 1
+        scalar[0]: 1.073
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
@@ -51,10 +51,10 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: offset
       value:
-        scalar[0]: 0
-        scalar[1]: 0
-        scalar[2]: 0
-        scalar[3]: 0
+        scalar[0]: -0.3
+        scalar[1]: -0.3
+        scalar[2]: -0.3
+        scalar[3]: -0.3
         texture: {instanceID: 0}
     - name: Selected
       value:
@@ -65,14 +65,14 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Interstice
       value:
-        scalar[0]: 0.2
+        scalar[0]: 0
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
         texture: {instanceID: 0}
     - name: Count
       value:
-        scalar[0]: 2.9
+        scalar[0]: 1.04
         scalar[1]: 0
         scalar[2]: 0
         scalar[3]: 0
