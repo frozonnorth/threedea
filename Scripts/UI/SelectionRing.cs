@@ -17,7 +17,7 @@ namespace Threedea {
             [Serializable]
             private class Option {
                 public string label;
-                public Sprite icon;
+                public Sprite icon; //IDEA use this to dynamically instantiate buttons
                 public SpriteRenderer instance;
                 public UnityAction action;
                 public bool enabled = true;
@@ -57,13 +57,19 @@ namespace Threedea {
             [Tooltip("serialized only for debugging")]
             [SerializeField]
             private float angle = 1.5f;
+            private Animator animator;
+            private int visibilityHash;
 
             #region MonoBehaviour
             void Start() {
-                //TODO instantiate
+                animator = GetComponent<Animator>();
+                visibilityHash = Animator.StringToHash("visibility");
+                animator.SetInteger(visibilityHash, 0);
             }
 
             void Update() {
+                if (!animator.isInitialized) animator.Rebind();
+                visibilityHash = Animator.StringToHash("visibility");
                 //Position the icons
                 int enabledCounter = 0;
                 for (int i = 0; i < options.Length; ++i) {
@@ -76,6 +82,7 @@ namespace Threedea {
                 }
 
                 //Set the procedural material parameters
+                //IDEA: use MaterialPropertyBlock
                 ProceduralMaterial material = renderer.sharedMaterial as ProceduralMaterial;
                 material.SetProceduralFloat("Count", enabledCounter);
                 material.SetProceduralFloat("Selected", (enabledCounter - 1f) * angle / Mathf.PI);
@@ -105,6 +112,7 @@ namespace Threedea {
 
             #region EditorVR-IRay
             public void OnRayEnter(RayEventData eventData) {
+                Expand();
             }
 
             public void OnRayHover(RayEventData eventData) {
@@ -114,8 +122,23 @@ namespace Threedea {
             }
 
             public void OnRayExit(RayEventData eventData) {
+                Hide();
             }
             #endregion EditorVR-IRay
+
+            public void Hide() {
+                animator.SetInteger(visibilityHash, 0);
+            }
+
+            public void Dock() {
+                animator.SetInteger(visibilityHash, 1);
+
+            }
+
+            private void Expand() {
+                animator.SetInteger(visibilityHash, 2);
+            }
+
         }
     }
 }

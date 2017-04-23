@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4390727a31f7e4340acf6b58c8429b67
-timeCreated: 1492963079
+timeCreated: 1492964889
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -80,7 +80,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
@@ -103,7 +103,7 @@ SubstanceImporter:
           name: _DetailMask
         second:
           texture: {instanceID: 0}
-          scale: {x: 0, y: 0}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - first:
           name: _DetailNormalMap
@@ -115,13 +115,13 @@ SubstanceImporter:
           name: _EmissionMap
         second:
           texture: {instanceID: 0}
-          scale: {x: 0, y: 0}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - first:
           name: _MainTex
         second:
           texture: {instanceID: 0}
-          scale: {x: 0, y: 0}
+          scale: {x: 1, y: 1}
           offset: {x: 0, y: 0}
       - first:
           name: _MetallicGlossMap
@@ -147,7 +147,7 @@ SubstanceImporter:
         second: 1
       - first:
           name: _Cutoff
-        second: 0
+        second: 0.5
       - first:
           name: _DetailNormalMapScale
         second: 1
@@ -165,7 +165,7 @@ SubstanceImporter:
         second: 1
       - first:
           name: _Metallic
-        second: 0.504
+        second: 0.5
       - first:
           name: _Mode
         second: 1

@@ -5,15 +5,16 @@ using UnityEditor.Experimental.EditorVR.Modules;
 using UnityEditor.Experimental.EditorVR.UI;
 using UnityEditor.Experimental.EditorVR.Utilities;
 using UnityEngine.EventSystems;
+using Threedea.UI;
 
 namespace Threedea {
     internal class LinkHandle : MonoBehaviour, ISelectionFlags, IRayEnterHandler, IRayExitHandler, IRayHoverHandler {
         private float growFactor = 1.25f;
         private LinkStyler styler;
         [SerializeField]
-        private GameObject hoverPrefab;
+        private LinkHoverMenu hoverPrefab;
         [SerializeField]
-        private GameObject hoverInstance;
+        private LinkHoverMenu hoverInstance;
 
         public SelectionFlags selectionFlags { get { return m_SelectionFlags; } set { m_SelectionFlags = value; } }
         [SerializeField]
@@ -22,11 +23,12 @@ namespace Threedea {
 
         public void Start() {
             styler = GetComponent<LinkStyler>();
-            hoverInstance = ObjectUtils.Instantiate(hoverPrefab, transform, runInEditMode: true, active: false);
+            var go = ObjectUtils.Instantiate(hoverPrefab.gameObject, transform, runInEditMode: true, active: false);
+            hoverInstance = go.GetComponent<LinkHoverMenu>();
         }
 
         public void OnRayEnter(RayEventData eventData) {
-            hoverInstance.SetActive(true);
+            hoverInstance.gameObject.SetActive(true);
         }
 
         public void OnRayHover(RayEventData eventData) {
@@ -34,11 +36,13 @@ namespace Threedea {
             if (raycastResult.gameObject.CompareTag("Link handle")) {
                 hoverInstance.transform.position = ClosestPoint(raycastResult.worldPosition);
                 hoverInstance.transform.LookAt(CameraUtils.GetMainCamera().transform.position);
+                hoverInstance.Dock();
             }
         }
 
         public void OnRayExit(RayEventData eventData) {
-            hoverInstance.SetActive(false);
+            hoverInstance.gameObject.SetActive(false);
+            hoverInstance.Hide();
         }
 
         /// <summary>
