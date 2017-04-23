@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor.Experimental.EditorVR.Modules;
 using UnityEditor.Experimental.EditorVR.UI;
 using UnityEditor.Experimental.EditorVR.Utilities;
-using System;
 using UnityEngine.EventSystems;
 
 namespace Threedea {
