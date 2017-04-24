@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 
 using UnityEngine;
+using UnityEditor.Experimental.EditorVR;
 using UnityEditor.Experimental.EditorVR.Modules;
 using UnityEditor.Experimental.EditorVR.UI;
 using UnityEditor.Experimental.EditorVR.Utilities;
@@ -8,7 +9,10 @@ using UnityEngine.EventSystems;
 using Threedea.UI;
 
 namespace Threedea {
+	[RequiresTag(LINK_HANDLE_TAG)]
     internal class LinkHandle : MonoBehaviour, ISelectionFlags, IRayEnterHandler, IRayExitHandler, IRayHoverHandler {
+        private const string LINK_HANDLE_TAG = "Link handle";
+
         private float growFactor = 1.25f;
         private LinkStyler styler;
         [SerializeField]
@@ -33,7 +37,7 @@ namespace Threedea {
 
         public void OnRayHover(RayEventData eventData) {
             RaycastResult raycastResult = eventData.pointerCurrentRaycast;
-            if (raycastResult.gameObject.CompareTag("Link handle")) {
+            if (raycastResult.gameObject.CompareTag(LINK_HANDLE_TAG)) {
                 hoverInstance.transform.position = ClosestPoint(raycastResult.worldPosition);
                 hoverInstance.transform.LookAt(CameraUtils.GetMainCamera().transform.position);
                 hoverInstance.Dock();
@@ -46,7 +50,7 @@ namespace Threedea {
         }
 
         /// <summary>
-        /// The closes point along the axis of this link
+        /// The closest point along the axis of this link
         /// </summary>
         /// <param name="worldPosition"></param>
         /// <returns></returns>
