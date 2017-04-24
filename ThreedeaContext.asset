@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcb87ab5055bd3498c8b75ba8ccde1c, type: 3}
+  m_Name: ThreedeaContext
+  m_EditorClassIdentifier: 
+  m_RunInEditMode: 0
+  m_DefaultToolStack:
+  - {fileID: 11500000, guid: a423dc62f2d8d394f987e34bdc06a326, type: 3}
+  - {fileID: 11500000, guid: 11714cad8f09ddc4ea818cd4d1fefdab, type: 3}
