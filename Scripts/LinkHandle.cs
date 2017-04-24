@@ -4,22 +4,15 @@ using UnityEngine;
 using UnityEditor.Experimental.EditorVR;
 using UnityEditor.Experimental.EditorVR.Modules;
 using UnityEditor.Experimental.EditorVR.UI;
-using UnityEditor.Experimental.EditorVR.Utilities;
 using UnityEngine.EventSystems;
-using Threedea.UI;
-using System;
 
 namespace Threedea {
-	[RequiresTag(LINK_HANDLE_TAG)]
+    [RequiresTag(LINK_HANDLE_TAG)]
     internal class LinkHandle : MonoBehaviour, ISelectionFlags, IRayEnterHandler, IRayExitHandler, IRayHoverHandler {
         private const string LINK_HANDLE_TAG = "Link handle";
 
         private float growFactor = 1.25f;
         private LinkStyler styler;
-        [SerializeField]
-        private LinkHoverMenu hoverPrefab;
-        [SerializeField]
-        private LinkHoverMenu hoverInstance;
 
         public SelectionFlags selectionFlags { get { return m_SelectionFlags; } set { m_SelectionFlags = value; } }
         [SerializeField]
@@ -28,8 +21,6 @@ namespace Threedea {
 
         public void Start() {
             styler = GetComponent<LinkStyler>();
-            var go = ObjectUtils.Instantiate(hoverPrefab.gameObject, transform, runInEditMode: true, active: false);
-            hoverInstance = go.GetComponent<LinkHoverMenu>();
         }
 
         internal void PositionBetween(Idea a, Idea b) {
@@ -40,21 +31,15 @@ namespace Threedea {
         }
 
         public void OnRayEnter(RayEventData eventData) {
-            hoverInstance.gameObject.SetActive(true);
         }
 
         public void OnRayHover(RayEventData eventData) {
             RaycastResult raycastResult = eventData.pointerCurrentRaycast;
             if (raycastResult.gameObject.CompareTag(LINK_HANDLE_TAG)) {
-                hoverInstance.transform.position = ClosestPoint(raycastResult.worldPosition);
-                hoverInstance.transform.LookAt(CameraUtils.GetMainCamera().transform.position);
-                hoverInstance.Dock();
             }
         }
 
         public void OnRayExit(RayEventData eventData) {
-            hoverInstance.gameObject.SetActive(false);
-            hoverInstance.Hide();
         }
 
         /// <summary>
