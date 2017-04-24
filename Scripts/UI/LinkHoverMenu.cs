@@ -15,6 +15,10 @@ namespace Threedea {
             internal void Dock() {
                 selectionRing.Dock();
             }
+            
+            internal void Expand() {
+                selectionRing.Expand();
+            }
 
         }
     }

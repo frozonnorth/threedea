@@ -132,10 +132,9 @@ namespace Threedea {
 
             public void Dock() {
                 animator.SetInteger(visibilityHash, 1);
-
             }
 
-            private void Expand() {
+            public void Expand() {
                 animator.SetInteger(visibilityHash, 2);
             }
 
