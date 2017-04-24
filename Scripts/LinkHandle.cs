@@ -7,6 +7,7 @@ using UnityEditor.Experimental.EditorVR.UI;
 using UnityEditor.Experimental.EditorVR.Utilities;
 using UnityEngine.EventSystems;
 using Threedea.UI;
+using System;
 
 namespace Threedea {
 	[RequiresTag(LINK_HANDLE_TAG)]
@@ -29,6 +30,13 @@ namespace Threedea {
             styler = GetComponent<LinkStyler>();
             var go = ObjectUtils.Instantiate(hoverPrefab.gameObject, transform, runInEditMode: true, active: false);
             hoverInstance = go.GetComponent<LinkHoverMenu>();
+        }
+
+        internal void PositionBetween(Idea a, Idea b) {
+            Vector3 toB = b.transform.position - a.transform.position;
+            Vector3 up = Vector3.Lerp(a.transform.up, b.transform.up, 0.5f);
+            transform.position = a.transform.position + toB * 0.5f;
+            transform.rotation = Quaternion.LookRotation(toB, up);
         }
 
         public void OnRayEnter(RayEventData eventData) {
