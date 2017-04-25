@@ -18,16 +18,31 @@ namespace Threedea {
         [SerializeField]
         [FlagsProperty]
         SelectionFlags m_SelectionFlags = SelectionFlags.Ray | SelectionFlags.Direct;
+        public Idea idea;
 
         public void Start() {
             styler = GetComponent<LinkStyler>();
         }
 
-        internal void PositionBetween(Idea a, Idea b) {
-            Vector3 toB = b.transform.position - a.transform.position;
-            Vector3 up = Vector3.Lerp(a.transform.up, b.transform.up, 0.5f);
-            transform.position = a.transform.position + toB * 0.5f;
-            transform.rotation = Quaternion.LookRotation(toB, up);
+        internal void UpdatePosition() {
+            if (idea==null) {
+                Debug.LogError("Idea not set", this);
+                return;
+            }
+            Transform target = idea.subject.transform;
+
+            //Between ideas
+            Vector3 toTarget = target.transform.position - idea.transform.position;
+            transform.position = idea.transform.position + toTarget * 0.5f;
+
+            //Facing the target
+            Vector3 up = Vector3.Lerp(idea.transform.up, target.transform.up, 0.5f);
+            transform.rotation = Quaternion.LookRotation(toTarget, up);
+
+            //Touching both ideas
+            Vector3 scale = transform.localScale;
+            scale.y = toTarget.magnitude * 0.5f;
+            transform.localScale = scale;
         }
 
         public void OnRayEnter(RayEventData eventData) {
