@@ -4,7 +4,7 @@ This project uses Unity's [EditorVR](https://github.com/Unity-Technologies/Edito
 
 # Development
 
-Threedea is still in **CONCEPT** stage.
+Threedea development is **ON HOLD**, waiting for further development and stabilization of EditorVR.
 
 Regardless of the development stage, always keep your project under source control to avoid data loss from the tool.
 
